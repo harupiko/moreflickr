@@ -142,7 +142,7 @@ $(document).ready(function() {
     } // }}}
 
     function isMobile() {
-        if(/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
+        if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
             return true;
         }
         return false;
@@ -154,13 +154,13 @@ $(document).ready(function() {
             dpr = window.devicePixelRatio;
         }
 
-        if (dpr > 1) { // retina use 2048 always
-            changeFlickrImages("Large 2048");
+        if (isMobile()) { // for Mobile
+            changeFlickrImages("Medium");
         } else {
-            if (isMobile()) { // if mobile
-                changeFlickrImages("Medium");
+            if (dpr > 1) { // for Retina (include iPad)
+                changeFlickrImages("Large 2048");
             } else {
-                changeFlickrImages("Large");
+                changeFlickrImages("Large"); // for PC
             }
         }
     }
