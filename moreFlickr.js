@@ -1,7 +1,7 @@
 
 $(document).ready(function() {
 
-    var API_KEY = "8401b55969ba10f3962eb354ae65eed5";
+    var API_KEY = "9c1aad3c59cc7857a6ce3f5611723faf";
     var FLICKR_URL_REG = /.*flickr\.com/;
 
     // create Flickr Url obj
