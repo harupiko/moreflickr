@@ -141,6 +141,12 @@ $(document).ready(function() {
         });
     } // }}}
 
+    function isMobile() {
+        if(/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
+            return true;
+        }
+        return false;
+    }
 
     function update() {
         var dpr = 1;
@@ -148,10 +154,14 @@ $(document).ready(function() {
             dpr = window.devicePixelRatio;
         }
 
-        if (dpr > 1) {
+        if (dpr > 1) { // retina use 2048 always
             changeFlickrImages("Large 2048");
         } else {
-            changeFlickrImages("Large");
+            if (isMobile()) { // if mobile
+                changeFlickrImages("Medium");
+            } else {
+                changeFlickrImages("Large");
+            }
         }
     }
 
