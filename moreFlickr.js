@@ -12,15 +12,17 @@ $(document).ready(function() {
         if (!parser.hostname.match(FLICKR_URL_REG)) {
             return null;
         }
+        
         var paths = parser.pathname.split('/');
         var files = paths[2].split('_');
-        var exts  = files[2].split('.');
         var flickr = {url: url};
+        var exts  = files.slice(-1)[0].split('.');
+        if(files.length != 3) exts[0] = "";
         flickr.protocol = parser.protocol;
         flickr.hostname = parser.hostname;
         flickr.serverid = paths[1];
         flickr.id = files[0];
-        flickr.secret = files[1];
+        flickr.secret = files[1].split('.')[0];
         flickr.size = exts[0];
         flickr.type = exts[1];
 
